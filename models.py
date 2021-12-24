@@ -24,12 +24,12 @@ class User(Base):
 if __name__ == "__main__":
     Base.metadata.create_all(engine)
 
-    # Adds a user
+    # # Adds a user
     # kirby_user = User(name="Kirby", fullname="Luis Kirby Salva", nickname="Kirby")
     # session.add(kirby_user)
     # session.commit()
 
-    # Adds multiple users
+    # # Adds multiple users
     # new_users = [
     #     User(name="Marriane", fullname="Marriane Mones", nickname="Mols"),
     #     User(name="Marjorie", fullname="Marjorie Mones", nickname="Marjo"),
@@ -37,3 +37,23 @@ if __name__ == "__main__":
     # ]
     # session.add_all(new_users)
     # session.commit()
+
+    # # Update a user
+    # kirby_user = User(name="Kirby", fullname="Luis Kirby Salva", nickname="Kirby")
+    # session.add(kirby_user)
+    # session.new # Outputs kirby_user
+    # kirby_user['nickname'] = 'new_nickname' # Update nickname
+    # session.new # Will reflect the new nickname
+    # session.commit() # Commit changes to db
+    # session.new # Nothing, changes already commited
+    # kirby_user['nickname'] = 'new_nickname_2' # Update nickname
+    # session.new # Nothing, no changes here. This is only for new entries
+    # session.dirty # Will reflect the new nickname
+    # session.commit() # Commit changes to db
+
+    # # Rollback changes
+    # session.rollback() # Removes changes reflected in session.new and session.dirty
+
+    # # Delete user
+    # session.delete(user_to_delete) # replace user_to_delete with user object -> you can query to get hold of the user
+    # session.commit() # Like creating and updating, changes must be commited before being reflected in the db
